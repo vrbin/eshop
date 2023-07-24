@@ -1,10 +1,10 @@
 package org.example.product;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
+import java.util.List;
 @Entity
 @Table(name="products")
 public class Product {
@@ -13,6 +13,8 @@ public class Product {
     private String name;
     private double price;
     private String description;
+    @ManyToMany
+    List<Order> orders;
 
     public Product() {}
 
