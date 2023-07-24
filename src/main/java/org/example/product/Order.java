@@ -1,14 +1,12 @@
 package org.example.product;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 @Entity
 @Table(name="orders")
 public class Order {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String firstName;
     private String lastName;
