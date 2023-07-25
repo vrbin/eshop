@@ -21,8 +21,10 @@ public class UserController {
     }
     @PostMapping ("/users")
     public ResponseEntity<String> addUser(User user) {
+        System.out.println("Chceme zalozit uzivatele " + user.getUsername());
         var encoder = new BCryptPasswordEncoder();
         String encodedPwd = encoder.encode(user.getPassword());
+        System.out.println("Hashnute heslo je " + encodedPwd);
         user.setPassword(encodedPwd);
         userService.addUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body("User " + user.getUsername() + " zalozen.");
