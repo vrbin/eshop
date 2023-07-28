@@ -1,5 +1,6 @@
-package org.example.product;
+package org.example.order;
 
+import org.example.exception.OrderNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -14,6 +15,11 @@ public class OrderService {
     }
     public List<Order> getOrders() {
         return orderJpaRepository.findAll();
+    }
+    public Order getOrderById(long id) {
+        return orderJpaRepository.findById(id).orElseThrow(
+                () -> new OrderNotFoundException(String.format("Objednavka s %id nenalezena.", id))
+        );
     }
 
 }

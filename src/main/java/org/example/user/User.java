@@ -1,4 +1,4 @@
-package org.example.product;
+package org.example.user;
 
 
 import javax.persistence.*;
@@ -39,5 +39,14 @@ public class User {
 
     public void setRoles(String roles) {
         this.roles = roles;
+    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", roles='" + roles + '\'' +
+                '}';
     }
 }

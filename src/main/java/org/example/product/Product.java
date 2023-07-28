@@ -1,20 +1,21 @@
 package org.example.product;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import org.example.order.Order;
+
+import javax.persistence.*;
 import java.util.List;
 @Entity
 @Table(name="products")
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id")
     private long id;
     private String name;
     private double price;
     private String description;
-    @ManyToMany
-    List<Order> orders;
+    @ManyToMany(mappedBy = "products")
+    private List<Order> orders;
 
     public Product() {}
 
@@ -52,5 +53,13 @@ public class Product {
 
     public double getPrice() {
         return this.price;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

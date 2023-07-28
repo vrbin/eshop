@@ -1,4 +1,6 @@
-package org.example.product;
+package org.example.order;
+
+import org.example.product.Product;
 
 import javax.persistence.*;
 import java.util.List;
@@ -6,13 +8,26 @@ import java.util.List;
 @Table(name="orders")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
     private long id;
     private String firstName;
     private String lastName;
-    @ManyToMany(mappedBy = "orders")
+    @ManyToMany
+    @JoinTable(
+            name = "order_product",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
     private List<Product> products;
     public Order() {}
+
+    public Order(long id, String firstName, String lastName, List<Product> products) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.products = products;
+    }
 
     public long getId() {
         return id;

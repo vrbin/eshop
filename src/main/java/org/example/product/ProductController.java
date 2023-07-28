@@ -1,5 +1,4 @@
 package org.example.product;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/{id}")
-    public Optional<Product> getProductById(@PathVariable long id) {
+    public Product getProductById(@PathVariable long id) {
         return productService.getProductById(id);
     }
     @GetMapping("/products")
