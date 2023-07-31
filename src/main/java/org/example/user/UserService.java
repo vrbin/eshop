@@ -15,6 +15,7 @@ public class UserService {
 
     public void addUser(User user) {
         String hashedPwd = new BCryptPasswordEncoder().encode(user.getPassword());
+        user.setPassword(hashedPwd);
         System.out.println("Uzivatel " + user.getUsername() + " ulozen?");
         userJpaRepository.save(user);
         System.out.println("Asi ano...");

@@ -1,5 +1,6 @@
 package org.example.product;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.example.order.Order;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ public class Product {
     private double price;
     private String description;
     @ManyToMany(mappedBy = "products")
+    @JsonIgnore
     private List<Order> orders;
 
     public Product() {}

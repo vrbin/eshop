@@ -7,8 +7,11 @@ import java.util.List;
 @Service
 public class ProductService {
 
-    @Autowired
     private ProductJpaRepository productJpaRepository;
+    @Autowired
+    public ProductService (ProductJpaRepository productJpaRepository) {
+        this.productJpaRepository = productJpaRepository;
+    }
 
     public void addProduct(Product prod) {
         System.out.println("Pridavam produkt s id " + prod.getId() + " s nazvem " + prod.getName());

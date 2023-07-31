@@ -7,8 +7,11 @@ import java.util.List;
 
 @Service
 public class OrderService {
-    @Autowired
-    private OrderJpaRepository orderJpaRepository;
+
+    private final OrderJpaRepository orderJpaRepository;
+    public OrderService(OrderJpaRepository orderJpaRepository) {
+        this.orderJpaRepository = orderJpaRepository;
+    }
 
     public void addOrder(Order order) {
         orderJpaRepository.save(order);

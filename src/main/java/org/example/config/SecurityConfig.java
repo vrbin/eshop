@@ -33,6 +33,7 @@ public class SecurityConfig {
     }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception {
+        /*
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/users/**").permitAll()
@@ -43,6 +44,9 @@ public class SecurityConfig {
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+         */
+        http.csrf().disable().authorizeRequests().antMatchers("/**").permitAll();
         return http.build();
     }
 }
